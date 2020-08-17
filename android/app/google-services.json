@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1056334265441",
+    "firebase_url": "https://real-texty.firebaseio.com",
+    "project_id": "real-texty",
+    "storage_bucket": "real-texty.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1056334265441:android:a21191f048d897a9f57e20",
+        "android_client_info": {
+          "package_name": "com.textyh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1056334265441-kaenelt5tjipmllvv74gbtels4olcboj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhMKA1kTuxhd1ElzWHtCGakv97t-eJFyA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1056334265441-kaenelt5tjipmllvv74gbtels4olcboj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
