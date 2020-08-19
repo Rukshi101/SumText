@@ -40,7 +40,7 @@ class App extends React.Component{
   
   <View>
     <Text>OKAY</Text>
-    <Button onClick = {() =>  this.setstate({showCamera :true})} > BUTTON</Button>
+    <Button onClick = {() =>  this.setstate({showCamera: !this.state.showCamera})} > BUTTON</Button>
     {
       this.state.showCamera && 
       <Camera 
