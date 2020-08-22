@@ -14,7 +14,7 @@ import {
 
 
 
-import Proptypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { RNCamera } from 'react-native-camera';
 
@@ -84,13 +84,13 @@ render() {
                     autoFocus={this.props.autoFocus}
                     whiteBalance={this.props.whiteBalance}
                     androidCameraPermissionOptions={{
-                        title: 'Gimme Permission to use Camera',
+                        title: 'Permission to use Camera',
                         message: 'We need your permissions to use your camera',
                         buttonPositive: 'Ok',
                         buttonNegative: 'Cancel',
                     }}
                     androidRecordAudioPermissionOptions={{
-                        title: 'Gimme Permission to use audio ',
+                        title: 'Permission to use audio ',
                         message: 'We need your permissions to use your audio',
                         buttonPositive: 'Ok',
                         buttonNegative: 'Cancel',
@@ -168,37 +168,37 @@ render() {
             }
 }
 Camera.propTypes = {
-    cameraType: Proptypes.any,
+    cameraType: PropTypes.any,
     //which camera to be used front or back
-    flashMode: Proptypes.any,
+    flashMode: PropTypes.any,
     //flash mode turn on and off or set to auto
-    autoFocus: Proptypes.any,
+    autoFocus: PropTypes.any,
     //autoFocus Property tells camera to turn faeture on
-    whiteBalance: Proptypes.any,
+    whiteBalance: PropTypes.any,
     //which whitebalance profile (sunny, cloud,shadowetc.)
-    ratio: Proptypes.string,
+    ratio: PropTypes.string,
     //image into a ratio 1:1
-    quality: Proptypes.number,
+    quality: PropTypes.number,
     //image specified quality from 0 to 1
-    imageWidth: Proptypes.number,
+    imageWidth: PropTypes.number,
     //imageWidth set the width of the captured image (height is auto calculated through the ratio)
-    style: Proptypes.object,
+    style: PropTypes.object,
     //style on how camera is displayed
-    onCapture: Proptypes.func,
+    onCapture: PropTypes.func,
     //accepts two paraamters base 64 image and recognized text paramters which conains recognized text
-    enabledOCR: Proptypes.bool,
+    enabledOCR: PropTypes.bool,
 
-    onClose: Proptypes.func,
+    onClose: PropTypes.func,
     //closes camera?????
 };
 
 
 Camera.defaultProps = {
     cameraType: Constants.Type.back,
-    flashMode: Constants.FlashModeoff,
+    flashMode: Constants.FlashMode.off,
     autoFocus: Constants.AutoFocus.on,
     whiteBalance: Constants.WhiteBalance.auto,
-    ratio: '4.3',
+    ratio: '4:3',
     quality: 0.5,
     imageWidth: 768,
     style: null,

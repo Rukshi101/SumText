@@ -53,5 +53,20 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+  <!-- Required with iOS 10 and higher -->
+  <key>NSCameraUsageDescription</key>
+  <string>Allow the user to use the camera to take profile picture.</string>
+
+  <!-- Required with iOS 11 and higher: include this only if you are planning to use the camera roll -->
+  <key>NSPhotoLibraryAddUsageDescription</key>
+  <string>Allow the user to pick an existing picture as the profile photo.</string>
+
+  <!-- Include this only if you are planning to use the camera roll -->
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>Allow the user to pick an existing picture as the profile photo.</string>
+
+  <!-- Include this only if you are planning to use the microphone for video recording -->
+  <key>NSMicrophoneUsageDescription</key>
+  <string>Allow the user to record a video with sound for profile photo.</string>
 </dict>
 </plist>
