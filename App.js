@@ -47,6 +47,22 @@ class App extends React.Component {
     };
   }
   // Must make a dedicated function because when doing setState we must be within the class!
+  takePicture = async () => {
+    if (this.camera) {
+      const options = {
+        quality: this.props.quality,
+        base64: true,
+        width: this.props.imageWidth,
+        doNotSave: true,
+        fixOrientation: true,
+        pauseAfterCapture: true,
+      };
+      const data = await this.camera.takePictureAsync(options);
+
+      this.props.onCapture &&
+        this.props.onCapture(data.base64, this.state.recognizedText);
+    }
+  };
   onButtonPress = () => {
     this.setState({showCamera: !this.state.showCamera});
   };
@@ -77,7 +93,7 @@ class App extends React.Component {
             quality={0.5}
             imageHeight={800}
             imageWidth={800}
-            onCapture={(data) => this.savePhoto(data)}
+            onCapture={(data) => this.takePicture(data)}
             onClose={(_) => {
               this.setState({showCamera: false});
             }}
