@@ -13,7 +13,6 @@ target 'Textyh' do
   ]
 
   pod 'Firebase/Core'
-  pod 'RNFS', :path => '../node_modules/react-native-fs'
   target 'TextyhTests' do
     inherit! :complete
     # Pods for testing

@@ -43,8 +43,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <View>
-        {/* <Text>{this.state.mainText}</Text> */}
+      <View
+        // eslint-disable-next-line react-native/no-inline-styles
+        style={{flex: 1, flexDirection: 'column', justifyContent: 'center'}}>
+        <Text>{this.state.mainText}</Text>
         <Button
           onClick={() => this.setstate({showCamera: !this.state.showCamera})}
           onPress={this.onButtonPress}
