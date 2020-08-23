@@ -80,10 +80,11 @@ class App extends React.Component {
             flashMode={Constants.FlashMode.off}
             autoFocus={Constants.AutoFocus.on}
             whiteBalance={Constants.WhiteBalance.auto}
-            ratio={'1:1'}
+            ratio={'4:3'}
             quality={0.5}
             imageHeight={800}
             imageWidth={800}
+            enabledOCR={true}
             onCapture={(data, recognizedText) =>
               this.onOCRCapture(recognizedText)
             }
