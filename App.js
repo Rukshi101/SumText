@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -16,7 +17,7 @@ import {
   Text,
   StatusBar,
   Button,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 
 import {
@@ -31,12 +32,12 @@ import Camera, {Constants} from './src/components/camera';
 import RNFS from 'react-native-fs';
 
 const openCamera = (props) => {
-  return(
+  return (
     <View>
       <Text>Camera Goes here</Text>
     </View>
-  )
-}
+  );
+};
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -52,21 +53,22 @@ class App extends React.Component {
 
   render() {
     return (
-
-      <View style = {StyleSheet.container}>
-        <StatusBar barStyle = "default" backgroundColor = 'green'/>
+      <View
+        style={{
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <StatusBar barStyle="default" backgroundColor="green" />
         <View>
-      <Text>Camera Goes here</Text>
-    </View>
-        <TouchableOpacity
-          onPress={this.onButtonPress}
-          title="Start Camera">
+          <Text>Camera Goes here</Text>
+        </View>
+        <TouchableOpacity onPress={this.onButtonPress} title="Start Camera">
           <Text>Open Camera</Text>
         </TouchableOpacity>
-        {
-        this.state.showCamera && 
+        {this.state.showCamera && (
           <Camera
-          style = {{height:200}}
             cameraType={Constants.Type.front}
             flashMode={Constants.FlashMode.off}
             autoFocus={Constants.AutoFocus.on}
@@ -80,7 +82,7 @@ class App extends React.Component {
               this.setState({showCamera: false});
             }}
           />
-        }
+        )}
       </View>
     );
   }
