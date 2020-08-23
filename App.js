@@ -54,7 +54,6 @@ class App extends React.Component {
     return (
 
       <View style = {StyleSheet.container}>
-        <StatusBar barStyle = "default" backgroundColor = 'green'/>
         <View>
       <Text>Camera Goes here</Text>
     </View>
@@ -66,7 +65,7 @@ class App extends React.Component {
         {
         this.state.showCamera && 
           <Camera
-          style = {{height:200}}
+          style = {{height:500}}
             cameraType={Constants.Type.front}
             flashMode={Constants.FlashMode.off}
             autoFocus={Constants.AutoFocus.on}
