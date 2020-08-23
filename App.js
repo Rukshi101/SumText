@@ -52,13 +52,13 @@ class App extends React.Component {
 
   render() {
     return (
+
       <View style = {StyleSheet.container}>
         <StatusBar barStyle = "default" backgroundColor = 'green'/>
         <View>
       <Text>Camera Goes here</Text>
     </View>
         <TouchableOpacity
-         
           onPress={this.onButtonPress}
           title="Start Camera">
           <Text>Open Camera</Text>
