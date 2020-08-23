@@ -36,7 +36,7 @@ class App extends React.Component {
       showCamera: false,
     };
   }
-// Must make a dedicated function because when doing setState we must be within the class!
+  // Must make a dedicated function because when doing setState we must be within the class!
   onButtonPress = () => {
     this.setState({showCamera: !this.state.showCamera});
   };
@@ -44,9 +44,9 @@ class App extends React.Component {
   render() {
     return (
       <View>
-        <Text>{this.state.mainText}</Text>
+        {/* <Text>{this.state.mainText}</Text> */}
         <Button
-          // onClick={() => this.setstate({showCamera: !this.state.showCamera})}
+          onClick={() => this.setstate({showCamera: !this.state.showCamera})}
           onPress={this.onButtonPress}
           title="BUTTON">
           BUTTON
@@ -59,6 +59,7 @@ class App extends React.Component {
             whiteBalance={Constants.WhiteBalance.auto}
             ratio={'1:1'}
             quality={0.5}
+            imageHeight={800}
             imageWidth={800}
             onCapture={(data) => this.savePhoto(data)}
             onClose={(_) => {

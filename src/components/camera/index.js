@@ -10,15 +10,9 @@ import {
     Text,
 } from 'react-native';
 
-
-
-
-
 import PropTypes from 'prop-types';
 
 import { RNCamera } from 'react-native-camera';
-
-
 
 export const Constants = {
     ...RNCamera.Constants,
@@ -97,9 +91,9 @@ render() {
                     }}
                     //Holds the callback method if the enabled OCR is enabled. This is to recieve the recognized textwhenever camera detects text in image
                     onTextRecognized={this.props.enabledOCR ? (data) => this.onTextRecognized(data) : undefined}
-                />
+                    />
   
-                      <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'center' }} >
+                   <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'center' }} >
                    <TouchableOpacity
                    style={styles.camera.capture}
                    onPress={_ => {
@@ -129,7 +123,7 @@ render() {
                        style={{ width: 30, height: 30 }} resizeMode={'contain'} />
                </TouchableOpacity>
                <TouchableOpacity onPress = {this.takePicture.bind(this)} style = {styles.camera.capture}>
-                   <Image source = {require ("../../../assets/camera/cameraButton.png")} style = {{width:50, height:50}} resizeMode = {'contain'}/>
+                   <Image source = {require('../../../assets/camera/cameraButton.png')} style = {{width:50, height:50}} resizeMode = {'contain'}/>
                </TouchableOpacity>
                 {
                         //If enabled OCR is true, don't allow user to change camera
@@ -161,8 +155,6 @@ render() {
                     </TouchableOpacity>
 
                 }
-
-
                </View>
             );
             }
@@ -211,43 +203,42 @@ Camera.defaultProps = {
 
 const styles = {
     camera: {
-        container: {
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            top: 0,
-            bottom: 0,
-            backgroundColor: 'black',
-        },
-        preview: {
-            flex: 1,
-            justifyContent: 'flex-end',
-            alignItems: 'center',
-        },
-        capture: {
-            flex: 0,
-            padding: 15,
-            paddingHorizontal: 20,
-            alignSelf: 'center',
-            margin: 20,
-        },
-        closeButton: {
-            position: 'absolute',
-            backgroundColor: 'blue',
-            width: 50,
-            height: 50,
-            borderRadius: 25,
-            justifyContent: 'center',
-            top: Platform.OS === 'ios' ? 45 : 10,
-            left: 10,
-        },
-
-        closeButtonIcon: {
-            fontSize: Platform.OS === 'ios' ? 40 : 40,
-            fontWeight: 'bold',
-            alignSelf: 'center',
-            lineHeight: Platform.OS === 'ios' ? 58 : 40,
-        },
-
+      container: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        backgroundColor: 'black'
+      },
+      preview: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'center'
+      },
+      capture: {
+        flex: 0,
+        //backgroundColor: '#f00',
+        padding: 15,
+        paddingHorizontal: 20,
+        alignSelf: 'center',
+        margin: 20
+      }
     },
-};
+    closeButton: {
+      position: 'absolute',
+      backgroundColor: '#aaaaaab0', 
+      width: 50,
+      height: 50,
+      borderRadius: 25,
+      justifyContent: 'center',
+      top: Platform.OS === "ios" ? 45 : 10,
+      left: 10
+    },
+    closeButtonIcon: {
+      fontSize: Platform.OS === "ios" ? 40 : 40, 
+      fontWeight: 'bold', 
+      alignSelf: 'center', 
+      lineHeight: Platform.OS === "ios" ? 58 : 40
+    }
+  };

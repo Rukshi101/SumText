@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1056334265441-qhc3u1t6fksvnpvgebh3bpguscf6tcks.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1056334265441-qhc3u1t6fksvnpvgebh3bpguscf6tcks</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBA2PuG0GD9kL04wsRZbZc23O2L6JOoj7Y</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1056334265441</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.reactjs.native.example.Textyh</string>
+	<key>PROJECT_ID</key>
+	<string>real-texty</string>
+	<key>STORAGE_BUCKET</key>
+	<string>real-texty.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1056334265441:ios:7214a64d344dced1f57e20</string>
+	<key>DATABASE_URL</key>
+	<string>https://real-texty.firebaseio.com</string>
+</dict>
+</plist>
