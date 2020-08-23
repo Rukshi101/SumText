@@ -10,15 +10,9 @@ import {
     Text,
 } from 'react-native';
 
-
-
-
-
-import Proptypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { RNCamera } from 'react-native-camera';
-
-
 
 export const Constants = {
     ...RNCamera.Constants,
@@ -84,22 +78,22 @@ render() {
                     autoFocus={this.props.autoFocus}
                     whiteBalance={this.props.whiteBalance}
                     androidCameraPermissionOptions={{
-                        title: 'Gimme Permission to use Camera',
+                        title: 'Permission to use Camera',
                         message: 'We need your permissions to use your camera',
                         buttonPositive: 'Ok',
                         buttonNegative: 'Cancel',
                     }}
                     androidRecordAudioPermissionOptions={{
-                        title: 'Gimme Permission to use audio ',
+                        title: 'Permission to use audio ',
                         message: 'We need your permissions to use your audio',
                         buttonPositive: 'Ok',
                         buttonNegative: 'Cancel',
                     }}
                     //Holds the callback method if the enabled OCR is enabled. This is to recieve the recognized textwhenever camera detects text in image
                     onTextRecognized={this.props.enabledOCR ? (data) => this.onTextRecognized(data) : undefined}
-                />
+                    />
   
-                      <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'center' }} >
+                   <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'center' }} >
                    <TouchableOpacity
                    style={styles.camera.capture}
                    onPress={_ => {
@@ -129,7 +123,7 @@ render() {
                        style={{ width: 30, height: 30 }} resizeMode={'contain'} />
                </TouchableOpacity>
                <TouchableOpacity onPress = {this.takePicture.bind(this)} style = {styles.camera.capture}>
-                   <Image source = {require ("../../../assets/camera/cameraButton.png")} style = {{width:50, height:50}} resizeMode = {'contain'}/>
+                   <Image source = {require('../../../assets/camera/cameraButton.png')} style = {{width:50, height:50}} resizeMode = {'contain'}/>
                </TouchableOpacity>
                 {
                         //If enabled OCR is true, don't allow user to change camera
@@ -161,44 +155,42 @@ render() {
                     </TouchableOpacity>
 
                 }
-
-
                </View>
             );
             }
 }
 Camera.propTypes = {
-    cameraType: Proptypes.any,
+    cameraType: PropTypes.any,
     //which camera to be used front or back
-    flashMode: Proptypes.any,
+    flashMode: PropTypes.any,
     //flash mode turn on and off or set to auto
-    autoFocus: Proptypes.any,
+    autoFocus: PropTypes.any,
     //autoFocus Property tells camera to turn faeture on
-    whiteBalance: Proptypes.any,
+    whiteBalance: PropTypes.any,
     //which whitebalance profile (sunny, cloud,shadowetc.)
-    ratio: Proptypes.string,
+    ratio: PropTypes.string,
     //image into a ratio 1:1
-    quality: Proptypes.number,
+    quality: PropTypes.number,
     //image specified quality from 0 to 1
-    imageWidth: Proptypes.number,
+    imageWidth: PropTypes.number,
     //imageWidth set the width of the captured image (height is auto calculated through the ratio)
-    style: Proptypes.object,
+    style: PropTypes.object,
     //style on how camera is displayed
-    onCapture: Proptypes.func,
+    onCapture: PropTypes.func,
     //accepts two paraamters base 64 image and recognized text paramters which conains recognized text
-    enabledOCR: Proptypes.bool,
+    enabledOCR: PropTypes.bool,
 
-    onClose: Proptypes.func,
+    onClose: PropTypes.func,
     //closes camera?????
 };
 
 
 Camera.defaultProps = {
     cameraType: Constants.Type.back,
-    flashMode: Constants.FlashModeoff,
+    flashMode: Constants.FlashMode.off,
     autoFocus: Constants.AutoFocus.on,
     whiteBalance: Constants.WhiteBalance.auto,
-    ratio: '4.3',
+    ratio: '4:3',
     quality: 0.5,
     imageWidth: 768,
     style: null,
@@ -211,43 +203,42 @@ Camera.defaultProps = {
 
 const styles = {
     camera: {
-        container: {
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            top: 0,
-            bottom: 0,
-            backgroundColor: 'black',
-        },
-        preview: {
-            flex: 1,
-            justifyContent: 'flex-end',
-            alignItems: 'center',
-        },
-        capture: {
-            flex: 0,
-            padding: 15,
-            paddingHorizontal: 20,
-            alignSelf: 'center',
-            margin: 20,
-        },
-        closeButton: {
-            position: 'absolute',
-            backgroundColor: 'blue',
-            width: 50,
-            height: 50,
-            borderRadius: 25,
-            justifyContent: 'center',
-            top: Platform.OS === 'ios' ? 45 : 10,
-            left: 10,
-        },
-
-        closeButtonIcon: {
-            fontSize: Platform.OS === 'ios' ? 40 : 40,
-            fontWeight: 'bold',
-            alignSelf: 'center',
-            lineHeight: Platform.OS === 'ios' ? 58 : 40,
-        },
-
+      container: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        backgroundColor: 'black'
+      },
+      preview: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'center'
+      },
+      capture: {
+        flex: 0,
+        //backgroundColor: '#f00',
+        padding: 15,
+        paddingHorizontal: 20,
+        alignSelf: 'center',
+        margin: 20
+      }
     },
-};
+    closeButton: {
+      position: 'absolute',
+      backgroundColor: '#aaaaaab0', 
+      width: 50,
+      height: 50,
+      borderRadius: 25,
+      justifyContent: 'center',
+      top: Platform.OS === "ios" ? 45 : 10,
+      left: 10
+    },
+    closeButtonIcon: {
+      fontSize: Platform.OS === "ios" ? 40 : 40, 
+      fontWeight: 'bold', 
+      alignSelf: 'center', 
+      lineHeight: Platform.OS === "ios" ? 58 : 40
+    }
+  };
