@@ -16,6 +16,7 @@ import {
   Text,
   StatusBar,
   Button,
+  TouchableOpacity
 } from 'react-native';
 
 import {
@@ -28,6 +29,14 @@ import {
 
 import Camera, {Constants} from './src/components/camera';
 import RNFS from 'react-native-fs';
+
+const openCamera = (props) => {
+  return(
+    <View>
+      <Text>Camera Goes here</Text>
+    </View>
+  )
+}
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -43,16 +52,21 @@ class App extends React.Component {
 
   render() {
     return (
-      <View>
-        {/* <Text>{this.state.mainText}</Text> */}
-        <Button
-          onClick={() => this.setstate({showCamera: !this.state.showCamera})}
+      <View style = {StyleSheet.container}>
+        <StatusBar barStyle = "default" backgroundColor = 'green'/>
+        <View>
+      <Text>Camera Goes here</Text>
+    </View>
+        <TouchableOpacity
+         
           onPress={this.onButtonPress}
-          title="BUTTON">
-          BUTTON
-        </Button>
-        {this.state.showCamera && (
+          title="Start Camera">
+          <Text>Open Camera</Text>
+        </TouchableOpacity>
+        {
+        this.state.showCamera && 
           <Camera
+          style = {{height:200}}
             cameraType={Constants.Type.front}
             flashMode={Constants.FlashMode.off}
             autoFocus={Constants.AutoFocus.on}
@@ -66,7 +80,7 @@ class App extends React.Component {
               this.setState({showCamera: false});
             }}
           />
-        )}
+        }
       </View>
     );
   }
