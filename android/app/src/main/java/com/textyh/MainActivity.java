@@ -2,6 +2,8 @@ package com.textyh;
 
 import com.facebook.react.ReactActivity;
 
+import com.rnfs.RNFSPackage;  // <--- import 
+
 public class MainActivity extends ReactActivity {
 
   /**
@@ -12,4 +14,6 @@ public class MainActivity extends ReactActivity {
   protected String getMainComponentName() {
     return "Textyh";
   }
+
+  
 }

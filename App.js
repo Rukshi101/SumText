@@ -31,6 +31,9 @@ import {
 import Camera, {Constants} from './src/components/camera';
 import RNFS from 'react-native-fs';
 
+import * as tf from '@tensorflow/tfjs';
+import '@tensorflow/tfjs-react-native';
+
 const openCamera = (props) => {
   return (
     <View>
@@ -45,15 +48,24 @@ class App extends React.Component {
       mainText: 'FIRST',
       showCamera: false,
       recognizedText: null,
+      isTfReady: false,
     };
   }
-  // Must make a dedicated function because when doing setState we must be within the class!
 
+  async componentDidMount() {
+    // wait for tf to be ready
+    await tf.ready();
+    this.setState({
+      isTfReady: true,
+    });
+  }
+
+  // Fires when we take a picture!
   onOCRCapture(recognizedText) {
     console.log('onCapture', recognizedText);
     this.setState({showCamera: false, recognizedText: recognizedText});
   }
-
+  // Must make a dedicated function because when doing setState we must be within the class!
   onButtonPress = () => {
     this.setState({showCamera: !this.state.showCamera});
   };

@@ -32,5 +32,7 @@
 	<string>1:1056334265441:ios:7214a64d344dced1f57e20</string>
 	<key>DATABASE_URL</key>
 	<string>https://real-texty.firebaseio.com</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Allow $(PRODUCT_NAME) to use the camera</string>
 </dict>
 </plist>
