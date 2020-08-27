@@ -45,7 +45,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mainText: 'FIRST',
+      mainText: 'Tensorflow Initializing...',
       showCamera: false,
       recognizedText: null,
       isTfReady: false,
@@ -57,6 +57,7 @@ class App extends React.Component {
     await tf.ready();
     this.setState({
       isTfReady: true,
+      mainText: 'TensorFlow JS React Native Ready',
     });
   }
 
@@ -81,7 +82,7 @@ class App extends React.Component {
         }}>
         <StatusBar barStyle="default" backgroundColor="green" />
         <View>
-          <Text>Camera Goes here</Text>
+          <Text>{this.state.mainText}</Text>
         </View>
         <TouchableOpacity onPress={this.onButtonPress} title="Start Camera">
           <Text>Open Camera</Text>

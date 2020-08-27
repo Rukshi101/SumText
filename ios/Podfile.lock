@@ -3,19 +3,53 @@ PODS:
   - CocoaAsyncSocket (7.6.4)
   - CocoaLibEvent (1.0.0)
   - DoubleConversion (1.1.6)
+  - EXCamera (8.3.1):
+    - UMBarCodeScannerInterface
+    - UMCore
+    - UMFaceDetectorInterface
+    - UMFileSystemInterface
+    - UMImageLoaderInterface
+    - UMPermissionsInterface
   - EXConstants (9.1.1):
     - UMConstantsInterface
+    - UMCore
+  - EXErrorRecovery (1.2.1):
     - UMCore
   - EXFileSystem (9.0.1):
     - UMCore
     - UMFileSystemInterface
+  - EXFont (8.2.2):
+    - UMCore
+    - UMFontInterface
+  - EXGL (8.3.1):
+    - EXGL_CPP
+    - UMCameraInterface
+    - UMCore
+    - UMFileSystemInterface
+  - EXGL_CPP (8.3.1):
+    - EXGL_CPP/EXGLContext (= 8.3.1)
+  - EXGL_CPP/EXGLContext (8.3.1)
   - EXImageLoader (1.1.1):
     - React-Core
     - UMCore
     - UMImageLoaderInterface
+  - EXKeepAwake (8.2.1):
+    - UMCore
+  - EXLinearGradient (8.2.1):
+    - UMCore
+  - EXLocation (8.2.1):
+    - UMCore
+    - UMPermissionsInterface
+    - UMTaskManagerInterface
   - EXPermissions (9.0.1):
     - UMCore
     - UMPermissionsInterface
+  - EXSplashScreen (0.5.0):
+    - React
+    - UMCore
+  - EXSQLite (8.2.1):
+    - UMCore
+    - UMFileSystemInterface
   - FBLazyVector (0.63.2)
   - FBReactNativeSpec (0.63.2):
     - Folly (= 2020.01.13.00)
@@ -433,6 +467,8 @@ PODS:
     - React-Core (= 0.63.2)
     - React-cxxreact (= 0.63.2)
     - React-jsi (= 0.63.2)
+  - RNCAsyncStorage (1.12.0):
+    - React
   - RNFS (2.16.6):
     - React
   - UMAppLoader (1.2.0)
@@ -458,10 +494,20 @@ PODS:
 
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
+  - EXCamera (from `../node_modules/expo-camera/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
+  - EXErrorRecovery (from `../node_modules/expo-error-recovery/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
+  - EXFont (from `../node_modules/expo-font/ios`)
+  - EXGL (from `../node_modules/expo-gl/ios`)
+  - EXGL_CPP (from `../node_modules/expo-gl-cpp/cpp`)
   - EXImageLoader (from `../node_modules/expo-image-loader/ios`)
+  - EXKeepAwake (from `../node_modules/expo-keep-awake/ios`)
+  - EXLinearGradient (from `../node_modules/expo-linear-gradient/ios`)
+  - EXLocation (from `../node_modules/expo-location/ios`)
   - EXPermissions (from `../node_modules/expo-permissions/ios`)
+  - EXSplashScreen (from `../node_modules/expo-splash-screen/ios`)
+  - EXSQLite (from `../node_modules/expo-sqlite/ios`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
   - Firebase/Core
@@ -510,6 +556,7 @@ DEPENDENCIES:
   - React-RCTText (from `../node_modules/react-native/Libraries/Text`)
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNFS (from `../node_modules/react-native-fs`)
   - UMAppLoader (from `../node_modules/unimodules-app-loader/ios`)
   - UMBarCodeScannerInterface (from `../node_modules/unimodules-barcode-scanner-interface/ios`)
@@ -561,14 +608,34 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
+  EXCamera:
+    :path: "../node_modules/expo-camera/ios"
   EXConstants:
     :path: "../node_modules/expo-constants/ios"
+  EXErrorRecovery:
+    :path: "../node_modules/expo-error-recovery/ios"
   EXFileSystem:
     :path: "../node_modules/expo-file-system/ios"
+  EXFont:
+    :path: "../node_modules/expo-font/ios"
+  EXGL:
+    :path: "../node_modules/expo-gl/ios"
+  EXGL_CPP:
+    :path: "../node_modules/expo-gl-cpp/cpp"
   EXImageLoader:
     :path: "../node_modules/expo-image-loader/ios"
+  EXKeepAwake:
+    :path: "../node_modules/expo-keep-awake/ios"
+  EXLinearGradient:
+    :path: "../node_modules/expo-linear-gradient/ios"
+  EXLocation:
+    :path: "../node_modules/expo-location/ios"
   EXPermissions:
     :path: "../node_modules/expo-permissions/ios"
+  EXSplashScreen:
+    :path: "../node_modules/expo-splash-screen/ios"
+  EXSQLite:
+    :path: "../node_modules/expo-sqlite/ios"
   FBLazyVector:
     :path: "../node_modules/react-native/Libraries/FBLazyVector"
   FBReactNativeSpec:
@@ -619,6 +686,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/Vibration"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNCAsyncStorage:
+    :path: "../node_modules/@react-native-community/async-storage"
   RNFS:
     :path: "../node_modules/react-native-fs"
   UMAppLoader:
@@ -655,10 +724,20 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
   CocoaLibEvent: 2fab71b8bd46dd33ddb959f7928ec5909f838e3f
   DoubleConversion: cde416483dac037923206447da6e1454df403714
+  EXCamera: d2caf6bdc821a316d070fe979a255dd5b32d2daf
   EXConstants: c2c6d5805520a34f274e09b778404310c52b118f
+  EXErrorRecovery: 59499558ff624ba190bc3c3ff9d5b8e983edcb18
   EXFileSystem: 8d1dc2924d62046275c84d70b88fa3aa7daeb116
+  EXFont: 5c464ce400b92f87f907d68093c29946177295bf
+  EXGL: 0c32d89258a134c924b21aca6ffacadc8909599f
+  EXGL_CPP: 2c6b8517bd3b95c0ecc064ae9d13a2b1ccbee676
   EXImageLoader: 8366cb1a7d207a241a1bfaa4c5ab4859cf72d507
+  EXKeepAwake: 1c77f2d31eafaea3410c00957669f306f340b843
+  EXLinearGradient: d25940ede1e798882f57715cff9edb4075d95e2d
+  EXLocation: c50022a5a829bad7a621d42eaecc60e171d8efa7
   EXPermissions: b6d7134b7215c33420318c2bbb5d362c20ac9726
+  EXSplashScreen: 2429477a39b51c9c9433d2480cbae699e6a0374b
+  EXSQLite: b001ba35deb3001bd6e4b256581a558ae745ef2f
   FBLazyVector: 3ef4a7f62e7db01092f9d517d2ebc0d0677c4a37
   FBReactNativeSpec: dc7fa9088f0f2a998503a352b0554d69a4391c5a
   Firebase: 210f41ca352067d83b1ba4fd2e7fb49a0c017397
@@ -709,6 +788,7 @@ SPEC CHECKSUMS:
   React-RCTText: 1b6773e776e4b33f90468c20fe3b16ca3e224bb8
   React-RCTVibration: 4d2e726957f4087449739b595f107c0d4b6c2d2d
   ReactCommon: a0a1edbebcac5e91338371b72ffc66aa822792ce
+  RNCAsyncStorage: 3eea36d9460c5159b592f9ecbe5a77f8aca98006
   RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
   UMAppLoader: 98b77b58fac12abab963f79f762ceef008c50505
   UMBarCodeScannerInterface: e1299aafa3bede8ba674e84199e9f319a0195cad
