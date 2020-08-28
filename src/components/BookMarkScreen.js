@@ -26,16 +26,14 @@ import{
 
 
 const BioSummaries = [
-  {id:2, title:"Summary 2000"},
-  {id:3, title:"Summary 1000"},
-  {id:4, title:"Summary 4000"}
+  {id:2, title:"Summary 2000"}
 ]
 class HomeScreen extends React.Component {
  
   render() {
     return (
       <View>
-          <Text style = {styles.title}>Recent Files</Text>
+          <Text style = {styles.title}>Bookmarked Summaries</Text>
           <SectionList
           sections = {[
           {title:"Biology", data:BioSummaries},
@@ -66,11 +64,9 @@ const styles =StyleSheet.create({
     marginVertical:2
   },
   header:{
-    backgroundColor:'grey',
+    backgroundColor:'blue',
     padding:19,
-    marginVertical:2,
-    fontSize:20,
-    fontWeight:'bold'
+    marginVertical:2
   },
   title:{
     fontSize:20

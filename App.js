@@ -37,6 +37,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import HomeScreen from './src/components/HomeScreen';
 import CameraScreen from './src/components/CameraScreen';
+import BookmarkScreen from './src/components/BookMarkScreen';
 
 
 const Tab = createBottomTabNavigator();
@@ -49,7 +50,7 @@ class App extends React.Component {
         <Tab.Screen name = "Home" component = {HomeScreen}/>
         <Tab.Screen name = "Camera" component = {CameraScreen}/>
         <Tab.Screen name = "Upload" component = {CameraScreen}/>
-        <Tab.Screen name = "Bookmarked" component = {CameraScreen}/>
+        <Tab.Screen name = "Bookmarked" component = {BookmarkScreen}/>
       </Tab.Navigator>
       </NavigationContainer>
       );
