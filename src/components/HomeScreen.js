@@ -32,7 +32,7 @@ const BioSummaries = [
 ]
 class HomeScreen extends React.Component {
  
-  render() {
+  render({navigation}) {
     return (
       <View>
           <Text style = {styles.title}>Recent Files</Text>
@@ -53,6 +53,9 @@ class HomeScreen extends React.Component {
             </Text>
               </View>
           )}
+          />
+           <Button title = "Go to New Page"
+          onPress = {() => navigation.navigate('Details')}
           />
       </View>
     );
