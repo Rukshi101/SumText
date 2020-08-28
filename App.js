@@ -33,6 +33,9 @@ import RNFS from 'react-native-fs';
 
 import * as tf from '@tensorflow/tfjs';
 import '@tensorflow/tfjs-react-native';
+import * as mobilenet from '@tensorflow-models/mobilenet';
+import {fetch} from '@tensorflow/tfjs-react-native';
+import * as jpeg from 'jpeg-js';
 
 const openCamera = (props) => {
   return (
@@ -57,8 +60,45 @@ class App extends React.Component {
     await tf.ready();
     this.setState({
       isTfReady: true,
-      mainText: 'TensorFlow JS React Native Ready',
+      mainText: 'TensorFlow JS React Native Ready, loading Mobilenet',
     });
+    const model = await mobilenet.load();
+    this.setState({
+      mainText: 'Mobilenet Loaded',
+    });
+    const response = await fetch(
+      'https://oceana.org/sites/default/files/tiger_shark_0.jpg',
+      {},
+      {isBinary: true},
+    );
+    this.setState({
+      mainText: 'Fetched Image',
+    });
+    const imageData = await response.arrayBuffer();
+    this.setState({
+      mainText: 'Converted Image',
+    });
+    const imageTensor = this.imageToTensor(imageData);
+    this.setState({
+      mainText: 'Tensorized Image',
+    });
+    const prediction = await model.classify(imageTensor);
+    this.setState({
+      mainText: JSON.stringify(prediction),
+    });
+  }
+
+  imageToTensor(rawData) {
+    const {width, height, data} = jpeg.decode(rawData, true);
+    const buffer = new Uint8Array(width * height * 3);
+    let offset = 0;
+    for (let i = 0; i < buffer.length; i += 3) {
+      buffer[i] = data[offset]; //Red
+      buffer[i + 1] = data[offset + 1]; //Green
+      buffer[i + 2] = data[offset + 2]; //Blue
+      offset += 4;
+    }
+    return tf.tensor3d(buffer, [height, width, 3]);
   }
 
   // Fires when we take a picture!
