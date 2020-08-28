@@ -31,22 +31,27 @@ import {
 import Camera, {Constants} from './src/components/camera';
 import RNFS from 'react-native-fs';
 
+
+import {NavigationContainer} from '@react-navigation/native'
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
 import HomeScreen from './src/components/HomeScreen';
 import CameraScreen from './src/components/CameraScreen';
 
 
-import {createStackNavigator} from 'react-navigation-stack';
-
-const MainStackNavigator = createStackNavigator({
-  Main: {
-    screen: CameraScreen
-  }
-});
+const Tab = createBottomTabNavigator();
 class App extends React.Component {
   
   render() {
     return (
-    <MainStackNavigator />
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name = "Home" component = {HomeScreen}/>
+        <Tab.Screen name = "Camera" component = {CameraScreen}/>
+        <Tab.Screen name = "Upload" component = {CameraScreen}/>
+        <Tab.Screen name = "Bookmarked" component = {CameraScreen}/>
+      </Tab.Navigator>
+      </NavigationContainer>
       );
   }
 }

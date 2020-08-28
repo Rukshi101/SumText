@@ -8,7 +8,7 @@
  */
 
 import React from 'react';
-import {StackNavigator} from 'react-navigation';
+
 
 import{
   SafeAreaView,
@@ -29,7 +29,7 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <View>
-          <Text>New screen</Text>
+          <Text>Recent Files</Text>
       </View>
     );
   }
