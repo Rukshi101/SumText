@@ -7,7 +7,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React,{Component} from 'react';
 
 import {
   SafeAreaView,
@@ -21,14 +21,14 @@ import {
   SectionList,
 } from 'react-native';
 
+import BookmarkScreen from '../components/BookMarkScreen';
+
 const BioSummaries = [
-  {id: 2, title: 'Summary 2000'},
-  {id: 3, title: 'Summary 1000'},
-  {id: 4, title: 'Summary 4000'},
-];
-class HomeScreen extends React.Component {
-  render() {
-    return (
+  {id:2, title:"Summary 2000"},
+  {id:3, title:"Summary 1000"},
+  {id:4, title:"Summary 4000"}
+]
+const HomeScreen = ({navigation})=>(
       <View>
         <Text style={styles.title}>Recent Files</Text>
         <SectionList
@@ -46,11 +46,13 @@ class HomeScreen extends React.Component {
               <Text style={styles.header}>{section.title}</Text>
             </View>
           )}
-        />
+          />
+           <Button title = "Go to New Page"
+          onPress = {() =>navigation.push("Bookmarks")}
+          />
       </View>
-    );
-  }
-}
+
+);
 
 const styles = StyleSheet.create({
   item: {
@@ -65,8 +67,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
-  title: {
-    fontSize: 20,
-  },
-});
-export default HomeScreen;
+  title:{
+    fontSize:20
+  }
+})
+export default HomeScreen
+
