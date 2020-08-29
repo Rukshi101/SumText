@@ -57,7 +57,7 @@ const BookMarkStack =createStackNavigator();
 function BookMarkStackScreen(){
   return(
     <BookMarkStack.Navigator>
-      <BookMarkStack.Screen name = "Bookmarkss" component = {BookmarkScreen}/>
+      <BookMarkStack.Screen name = "Bookmarks" component = {BookmarkScreen}/>
     </BookMarkStack.Navigator>
   )
 }

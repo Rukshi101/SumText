@@ -73,9 +73,13 @@ class PreviewScreen extends React.Component {
         <View style={styles.header}>
           <Text>This is what we recognized: </Text>
         </View>
-        <ScrollView>
+        <ScrollView style={styles.scrollView}>
           <View style={styles.wordList}>{this.populateWords()}</View>
         </ScrollView>
+        <View style={styles.bottomOptions}>
+          <Button title="Save" />
+          <Button title="Delete" />
+        </View>
       </View>
     );
   }
@@ -87,13 +91,9 @@ PreviewScreen.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 20,
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    backgroundColor: 'white',
+    flex: 1,
+    flexDirection: 'column',
+    padding: 4,
   },
   word: {
     fontSize: 20,
@@ -112,6 +112,15 @@ const styles = StyleSheet.create({
     flex: 0,
     borderWidth: 0,
     padding: 4,
+  },
+  bottomOptions: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'flex-end',
+  },
+  scrollView: {
+    height: 500,
   },
 });
 
