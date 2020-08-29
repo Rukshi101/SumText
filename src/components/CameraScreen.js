@@ -9,7 +9,6 @@
 
 import React from 'react';
 
-
 import {
   SafeAreaView,
   StyleSheet,
@@ -33,7 +32,8 @@ import Camera, {Constants} from '../components/camera';
 import RNFS from 'react-native-fs';
 
 import HomeScreen from '../components/HomeScreen';
-
+import Helper from '../lib/helper';
+import PreviewScreen from '../components/PreviewScreen';
 
 const openCamera = (props) => {
   return (
@@ -48,6 +48,7 @@ class CameraScreen extends React.Component {
     this.state = {
       mainText: 'FIRST',
       showCamera: false,
+      showWordList: false,
       recognizedText: null,
     };
   }
@@ -55,7 +56,11 @@ class CameraScreen extends React.Component {
 
   onOCRCapture(recognizedText) {
     console.log('onCapture', recognizedText);
-    this.setState({showCamera: false, recognizedText: recognizedText});
+    this.setState({
+      showCamera: false,
+      showWordList: Helper.isNotNullAndUndefined(recognizedText),
+      recognizedText: recognizedText,
+    });
   }
 
   onButtonPress = () => {
@@ -96,6 +101,9 @@ class CameraScreen extends React.Component {
               this.setState({showCamera: false});
             }}
           />
+        )}
+        {this.state.showWordList && (
+          <PreviewScreen wordBlock={this.state.recognizedText} />
         )}
       </View>
     );
