@@ -21,17 +21,15 @@ import{
   TouchableOpacity,
   SectionList
 } from 'react-native';
-
-
+import HomeScreen from '../components/HomeScreen';
 
 
 const BioSummaries = [
   {id:2, title:"Summary 2000"}
 ]
-class HomeScreen extends React.Component {
+const BookMarkScreen = ({navigation})=>(
  
-  render({navigation}) {
-    return (
+  
       <View>
           <Text style = {styles.title}>Bookmarked Summaries</Text>
           <SectionList
@@ -52,13 +50,13 @@ class HomeScreen extends React.Component {
               </View>
           )}
           />
-          <Button title = "Go to New Page"
-          onPress = {() => navigation.navigate('Details')}
+          <Button title = "Go Home"
+          onPress = {() => navigation.push('Home')}
           />
       </View>
-    );
-  }
-}
+   
+);
+
 
 const styles =StyleSheet.create({
   item:{
@@ -75,4 +73,6 @@ const styles =StyleSheet.create({
     fontSize:20
   }
 })
-export default HomeScreen;
+
+
+export default BookMarkScreen

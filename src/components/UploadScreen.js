@@ -30,28 +30,11 @@ const BioSummaries = [
   {id:3, title:"Summary 1000"},
   {id:4, title:"Summary 4000"}
 ]
-const HomeScreen = ({navigation})=>(
+const UploadScreen = ({navigation})=>(
 
       <View>
-          <Text style = {styles.title}>Recent Files</Text>
-          <SectionList
-          sections = {[
-          {title:"Biology", data:BioSummaries},
-            {title:"Science", data:BioSummaries}
-          ]}
-          renderItem = {({item}) =>(
-            <View>
-              <Text>{item.title}</Text>
-              </View>
-          )}
-          renderSectionHeader = {({section}) =>(
-            <View>
-              <Text style ={styles.header}>
-                {section.title}
-            </Text>
-              </View>
-          )}
-          />
+          <Text style = {styles.title}>UPLOAD FILES COMING SOON EH?</Text>
+          
            <Button title = "Go to New Page"
           onPress = {() =>navigation.push("Bookmarks")}
           />
@@ -78,4 +61,4 @@ const styles =StyleSheet.create({
 })
 
 
-export default HomeScreen
+export default UploadScreen

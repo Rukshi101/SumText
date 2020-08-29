@@ -38,25 +38,27 @@ import {createStackNavigator} from "@react-navigation/stack"
 import HomeScreen from './src/components/HomeScreen';
 import CameraScreen from './src/components/CameraScreen';
 import BookmarkScreen from './src/components/BookMarkScreen';
-
+import UploadScreen from './src/components/UploadScreen'
 
 const Tab = createBottomTabNavigator();
+
 const HomeStack =createStackNavigator();
 function HomeStackScreen(){
   return(
     <HomeStack.Navigator>
       <HomeStack.Screen name = "Home" component = {HomeScreen}/>
+      <HomeStack.Screen name = "Bookmarks" component = {BookmarkScreen}/>
     </HomeStack.Navigator>
   )
 }
 
 
 const BookMarkStack =createStackNavigator();
-function BookMarkScreen(){
+function BookMarkStackScreen(){
   return(
-    <HomeStack.Navigator>
-      <HomeStack.Screen name = "Home" component = {HomeScreen}/>
-    </HomeStack.Navigator>
+    <BookMarkStack.Navigator>
+      <BookMarkStack.Screen name = "Bookmarkss" component = {BookmarkScreen}/>
+    </BookMarkStack.Navigator>
   )
 }
 
@@ -68,8 +70,9 @@ class App extends React.Component {
       <Tab.Navigator>
         <Tab.Screen name = "Home" component = {HomeStackScreen}/>
         <Tab.Screen name = "Camera" component = {CameraScreen}/>
-        <Tab.Screen name = "Upload" component = {CameraScreen}/>
-        <Tab.Screen name = "Bookmarked" component = {BookmarkScreen}/>
+        <Tab.Screen name = "Upload" component = {UploadScreen}/>
+        <Tab.Screen name = "Bookmarked" component = {BookMarkStackScreen}/>
+        
       </Tab.Navigator>
       </NavigationContainer>
       );
