@@ -9,8 +9,7 @@
 
 import React from 'react';
 
-
-import{
+import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
@@ -19,57 +18,49 @@ import{
   StatusBar,
   Button,
   TouchableOpacity,
-  SectionList
+  SectionList,
 } from 'react-native';
 
-
-
-
-const BioSummaries = [
-  {id:2, title:"Summary 2000"}
-]
+const BioSummaries = [{id: 2, title: 'Summary 2000'}];
 class HomeScreen extends React.Component {
- 
   render() {
     return (
       <View>
-          <Text style = {styles.title}>Bookmarked Summaries</Text>
-          <SectionList
-          sections = {[
-          {title:"Biology", data:BioSummaries},
-            {title:"Science", data:BioSummaries}
+        <Text style={styles.title}>Bookmarked Summaries</Text>
+        <SectionList
+          sections={[
+            {title: 'Biology', data: BioSummaries},
+            {title: 'Science', data: BioSummaries},
           ]}
-          renderItem = {({item}) =>(
+          renderItem={({item}) => (
             <View>
               <Text>{item.title}</Text>
-              </View>
+            </View>
           )}
-          renderSectionHeader = {({section}) =>(
+          renderSectionHeader={({section}) => (
             <View>
-              <Text style ={styles.header}>
-                {section.title}
-            </Text>
-              </View>
+              <Text style={styles.header}>{section.title}</Text>
+            </View>
           )}
-          />
+        />
       </View>
     );
   }
 }
 
-const styles =StyleSheet.create({
-  item:{
-    backgroundColor:'black',
-    padding:20,
-    marginVertical:2
+const styles = StyleSheet.create({
+  item: {
+    backgroundColor: 'black',
+    padding: 20,
+    marginVertical: 2,
   },
-  header:{
-    backgroundColor:'blue',
-    padding:19,
-    marginVertical:2
+  header: {
+    backgroundColor: 'blue',
+    padding: 19,
+    marginVertical: 2,
   },
-  title:{
-    fontSize:20
-  }
-})
+  title: {
+    fontSize: 20,
+  },
+});
 export default HomeScreen;
