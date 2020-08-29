@@ -31,70 +31,51 @@ import {
 import Camera, {Constants} from './src/components/camera';
 import RNFS from 'react-native-fs';
 
-const openCamera = (props) => {
-  return (
-    <View>
-      <Text>Camera Goes here</Text>
-    </View>
-  );
-};
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createStackNavigator} from "@react-navigation/stack"
+import HomeScreen from './src/components/HomeScreen';
+import CameraScreen from './src/components/CameraScreen';
+import BookmarkScreen from './src/components/BookMarkScreen';
+import UploadScreen from './src/components/UploadScreen'
+import PreviewScreen from './src/components/PreviewScreen';
+
+const Tab = createBottomTabNavigator();
+
+const HomeStack =createStackNavigator();
+function HomeStackScreen(){
+  return(
+    <HomeStack.Navigator>
+      <HomeStack.Screen name = "Home" component = {HomeScreen}/>
+      <HomeStack.Screen name = "Bookmarks" component = {BookmarkScreen}/>
+    </HomeStack.Navigator>
+  )
+}
+
+
+const BookMarkStack =createStackNavigator();
+function BookMarkStackScreen(){
+  return(
+    <BookMarkStack.Navigator>
+      <BookMarkStack.Screen name = "Bookmarkss" component = {BookmarkScreen}/>
+    </BookMarkStack.Navigator>
+  )
+}
+
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      mainText: 'FIRST',
-      showCamera: false,
-      recognizedText: null,
-    };
-  }
-  // Must make a dedicated function because when doing setState we must be within the class!
-
-  onOCRCapture(recognizedText) {
-    console.log('onCapture', recognizedText);
-    this.setState({showCamera: false, recognizedText: recognizedText});
-  }
-
-  onButtonPress = () => {
-    this.setState({showCamera: !this.state.showCamera});
-  };
-
   render() {
     return (
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-        <StatusBar barStyle="default" backgroundColor="green" />
-        <View>
-          <Text>Camera Goes here</Text>
-        </View>
-        <TouchableOpacity onPress={this.onButtonPress} title="Start Camera">
-          <Text>Open Camera</Text>
-        </TouchableOpacity>
-        {this.state.showCamera && (
-          <Camera
-            cameraType={Constants.Type.front}
-            flashMode={Constants.FlashMode.off}
-            autoFocus={Constants.AutoFocus.on}
-            whiteBalance={Constants.WhiteBalance.auto}
-            ratio={'4:3'}
-            quality={0.5}
-            imageHeight={800}
-            imageWidth={800}
-            enabledOCR={true}
-            onCapture={(data, recognizedText) =>
-              this.onOCRCapture(recognizedText)
-            }
-            onClose={(_) => {
-              this.setState({showCamera: false});
-            }}
-          />
-        )}
-      </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name = "Home" component = {HomeStackScreen}/>
+        <Tab.Screen name = "Camera" component = {CameraScreen}/>
+        <Tab.Screen name = "Upload" component = {UploadScreen}/>
+        <Tab.Screen name = "Bookmarked" component = {BookMarkStackScreen}/>
+        
+      </Tab.Navigator>
+      </NavigationContainer>
     );
   }
 }
+
 export default App;
