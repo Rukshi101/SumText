@@ -31,14 +31,14 @@ import {
 import Camera, {Constants} from './src/components/camera';
 import RNFS from 'react-native-fs';
 
-
-import {NavigationContainer} from '@react-navigation/native'
+import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from "@react-navigation/stack"
 import HomeScreen from './src/components/HomeScreen';
 import CameraScreen from './src/components/CameraScreen';
 import BookmarkScreen from './src/components/BookMarkScreen';
 import UploadScreen from './src/components/UploadScreen'
+import PreviewScreen from './src/components/PreviewScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -63,7 +63,6 @@ function BookMarkStackScreen(){
 }
 
 class App extends React.Component {
-  
   render() {
     return (
     <NavigationContainer>
@@ -75,9 +74,8 @@ class App extends React.Component {
         
       </Tab.Navigator>
       </NavigationContainer>
-      );
+    );
   }
 }
-
 
 export default App;

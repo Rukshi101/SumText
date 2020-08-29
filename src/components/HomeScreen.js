@@ -9,8 +9,7 @@
 
 import React,{Component} from 'react';
 
-
-import{
+import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
@@ -19,11 +18,10 @@ import{
   StatusBar,
   Button,
   TouchableOpacity,
-  SectionList
+  SectionList,
 } from 'react-native';
 
 import BookmarkScreen from '../components/BookMarkScreen';
-
 
 const BioSummaries = [
   {id:2, title:"Summary 2000"},
@@ -31,25 +29,22 @@ const BioSummaries = [
   {id:4, title:"Summary 4000"}
 ]
 const HomeScreen = ({navigation})=>(
-
       <View>
-          <Text style = {styles.title}>Recent Files</Text>
-          <SectionList
-          sections = {[
-          {title:"Biology", data:BioSummaries},
-            {title:"Science", data:BioSummaries}
+        <Text style={styles.title}>Recent Files</Text>
+        <SectionList
+          sections={[
+            {title: 'Biology', data: BioSummaries},
+            {title: 'Science', data: BioSummaries},
           ]}
-          renderItem = {({item}) =>(
+          renderItem={({item}) => (
             <View>
               <Text>{item.title}</Text>
-              </View>
+            </View>
           )}
-          renderSectionHeader = {({section}) =>(
+          renderSectionHeader={({section}) => (
             <View>
-              <Text style ={styles.header}>
-                {section.title}
-            </Text>
-              </View>
+              <Text style={styles.header}>{section.title}</Text>
+            </View>
           )}
           />
            <Button title = "Go to New Page"
@@ -59,23 +54,22 @@ const HomeScreen = ({navigation})=>(
 
 );
 
-const styles =StyleSheet.create({
-  item:{
-    backgroundColor:'black',
-    padding:20,
-    marginVertical:2
+const styles = StyleSheet.create({
+  item: {
+    backgroundColor: 'black',
+    padding: 20,
+    marginVertical: 2,
   },
-  header:{
-    backgroundColor:'grey',
-    padding:19,
-    marginVertical:2,
-    fontSize:20,
-    fontWeight:'bold'
+  header: {
+    backgroundColor: 'grey',
+    padding: 19,
+    marginVertical: 2,
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   title:{
     fontSize:20
   }
 })
-
-
 export default HomeScreen
+
