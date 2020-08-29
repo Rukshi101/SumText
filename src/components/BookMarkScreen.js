@@ -7,7 +7,7 @@
  * @flow strict-local
  */
 
-import React,{Component} from 'react';
+import React from 'react';
 
 import {
   SafeAreaView,
@@ -20,17 +20,14 @@ import {
   TouchableOpacity,
   SectionList,
 } from 'react-native';
-
-import BookmarkScreen from '../components/BookMarkScreen';
+import HomeScreen from '../components/HomeScreen';
 
 const BioSummaries = [
-  {id:2, title:"Summary 2000"},
-  {id:3, title:"Summary 1000"},
-  {id:4, title:"Summary 4000"}
+  {id:2, title:"Summary 2000"}
 ]
-const HomeScreen = ({navigation})=>(
+const BookMarkScreen = ({navigation})=>(
       <View>
-        <Text style={styles.title}>Recent Files</Text>
+        <Text style={styles.title}>Bookmarked Summaries</Text>
         <SectionList
           sections={[
             {title: 'Biology', data: BioSummaries},
@@ -47,12 +44,13 @@ const HomeScreen = ({navigation})=>(
             </View>
           )}
           />
-           <Button title = "Go to New Page"
-          onPress = {() =>navigation.push("Bookmarks")}
+          <Button title = "Go Home"
+          onPress = {() => navigation.push('Home')}
           />
       </View>
-
+   
 );
+
 
 const styles = StyleSheet.create({
   item: {
@@ -61,15 +59,14 @@ const styles = StyleSheet.create({
     marginVertical: 2,
   },
   header: {
-    backgroundColor: 'grey',
+    backgroundColor: 'blue',
     padding: 19,
     marginVertical: 2,
-    fontSize: 20,
-    fontWeight: 'bold',
   },
+
   title:{
     fontSize:20
   }
 })
-export default HomeScreen
+export default BookMarkScreen
 
