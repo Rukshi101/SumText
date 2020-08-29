@@ -63,8 +63,12 @@ class CameraScreen extends React.Component {
     });
   }
 
-  onButtonPress = () => {
+  onCameraStart = () => {
     this.setState({showCamera: !this.state.showCamera});
+  };
+
+  summarizeText = () => {
+    this.setState({showWordList: false});
   };
 
   render() {
@@ -78,9 +82,9 @@ class CameraScreen extends React.Component {
         }}>
         <StatusBar barStyle="default" backgroundColor="green" />
         <View>
-          <Text>Camera Goes here</Text>
+          <Text>Let's Summarize some Text</Text>
         </View>
-        <TouchableOpacity onPress={this.onButtonPress} title="Start Camera">
+        <TouchableOpacity onPress={this.onCameraStart} title="Start Camera">
           <Text>Open Camera</Text>
         </TouchableOpacity>
         {this.state.showCamera && (
@@ -103,10 +107,26 @@ class CameraScreen extends React.Component {
           />
         )}
         {this.state.showWordList && (
-          <PreviewScreen wordBlock={this.state.recognizedText} />
+          <View style={styles.container}>
+            <PreviewScreen wordBlock={this.state.recognizedText} />
+            <Button title="SUMMARIZE" onPress={this.summarizeText} />
+          </View>
         )}
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: 20,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    backgroundColor: 'white',
+  },
+});
+
 export default CameraScreen;
