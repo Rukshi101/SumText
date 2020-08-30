@@ -28,6 +28,7 @@ const BioSummaries = [
   {id: 3, title: 'Summary 1000'},
   {id: 4, title: 'Summary 4000'},
 ];
+
 const HomeScreen = ({navigation}) => (
   <View>
     <Text style={styles.title}>Recent Files</Text>

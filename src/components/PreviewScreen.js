@@ -14,6 +14,8 @@ import {
 } from 'react-native';
 
 import PropTypes from 'prop-types';
+import LocalDB from '../lib/localDB';
+
 class PreviewScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -67,6 +69,13 @@ class PreviewScreen extends React.Component {
     // console.log(wordViews);
     return wordViews;
   }
+
+  onSave = async () => {
+    await LocalDB.storeObject('modTing', this.state.wordList);
+    const getItBack = await LocalDB.getObject('modTing');
+    console.log('From local storage: lets GOOOOOO', getItBack);
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -77,7 +86,7 @@ class PreviewScreen extends React.Component {
           <View style={styles.wordList}>{this.populateWords()}</View>
         </ScrollView>
         <View style={styles.bottomOptions}>
-          <Button title="Save" />
+          <Button title="Save" onPress={this.onSave} />
           <Button title="Delete" />
         </View>
       </View>

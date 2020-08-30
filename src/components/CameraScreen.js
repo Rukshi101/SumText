@@ -67,7 +67,7 @@ class CameraScreen extends React.Component {
     this.setState({showCamera: !this.state.showCamera});
   };
 
-  ratakePicture = () => {
+  retakePicture = () => {
     this.setState({showWordList: false});
   };
 
@@ -108,7 +108,7 @@ class CameraScreen extends React.Component {
         )}
         {this.state.showWordList && (
           <View style={styles.container}>
-            <Button title="RETAKE" onPress={this.ratakePicture} />
+            <Button title="RETAKE" onPress={this.retakePicture} />
             <PreviewScreen wordBlock={this.state.recognizedText} />
           </View>
         )}
