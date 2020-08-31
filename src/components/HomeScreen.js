@@ -50,7 +50,7 @@ const HomeScreen = ({navigation}) => (
     />
     <Button
       title="Go to New Page"
-      onPress={() => navigation.push('Bookmarks')}
+      onPress={() => navigation.navigate('Bookmarks')}
     />
   </View>
 );

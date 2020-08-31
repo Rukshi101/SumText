@@ -14,20 +14,21 @@ import PropTypes from 'prop-types';
 
 import { RNCamera } from 'react-native-camera';
 import { useNavigation } from '@react-navigation/native';
+import Helper from '../../lib/helper';
 export const Constants = {
     ...RNCamera.Constants,
 };
 
-class Camera extends Component {
-    
+export default class Camera extends Component {
     camera = null;
-    state = {
-        cameraType: Constants.Type.back,
-        flashMode: Constants.FlashMode.off,
-        recognizedText: null,
+    constructor(props) {
+        super(props);
+        this.state = {
+            cameraType: Constants.Type.back,
+            flashMode: Constants.FlashMode.off,
+            recognizedText: null,
+        };
     }
-
-  
 
 componentDidMount () {
     this.setState({
@@ -51,7 +52,10 @@ takePicture = async () => {
         const data = await this.camera.takePictureAsync(options);
 
         this.props.onCapture && this.props.onCapture(data.base64, this.state.recognizedText);
-       navigation.push('Preview');
+        // If recognized text isn't null, navigate to the preview pagea and pass in the recognized text as a route param!
+        Helper.isNotNullAndUndefined(this.state.recognizedText) && this.props.navigation.navigate('Preview', {
+            wordBlock: this.state.recognizedText,
+        });
     }
 }
 
@@ -65,7 +69,6 @@ onTextRecognized(data) {
 }
 
 render() {
-    const {navigation} = this.props;
     return (
         <View style={[styles.camera.container, this.props.style]}>
              <RNCamera
@@ -95,7 +98,7 @@ render() {
                     //Holds the callback method if the enabled OCR is enabled. This is to recieve the recognized textwhenever camera detects text in image
                     onTextRecognized={this.props.enabledOCR ? (data) => this.onTextRecognized(data) : undefined}
                     />
-  
+
                    <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'center' }} >
                    <TouchableOpacity
                    style={styles.camera.capture}
@@ -125,7 +128,7 @@ render() {
                        }
                        style={{ width: 30, height: 30 }} resizeMode={'contain'} />
                </TouchableOpacity>
-               
+
                <TouchableOpacity onPress = {this.takePicture.bind(this)} style = {styles.camera.capture}>
                    <Image source = {require('../../../assets/camera/cameraButton.png')} style = {{width:50, height:50}} resizeMode = {'contain'}/>
                </TouchableOpacity>
@@ -213,12 +216,12 @@ const styles = {
         right: 0,
         top: 0,
         bottom: 0,
-        backgroundColor: 'black'
+        backgroundColor: 'black',
       },
       preview: {
         flex: 1,
         justifyContent: 'flex-end',
-        alignItems: 'center'
+        alignItems: 'center',
       },
       capture: {
         flex: 0,
@@ -226,28 +229,23 @@ const styles = {
         padding: 15,
         paddingHorizontal: 20,
         alignSelf: 'center',
-        margin: 20
-      }
+        margin: 20,
+      },
     },
     closeButton: {
       position: 'absolute',
-      backgroundColor: '#aaaaaab0', 
+      backgroundColor: '#aaaaaab0',
       width: 50,
       height: 50,
       borderRadius: 25,
       justifyContent: 'center',
-      top: Platform.OS === "ios" ? 45 : 10,
-      left: 10
+      top: Platform.OS === 'ios' ? 45 : 10,
+      left: 10,
     },
     closeButtonIcon: {
-      fontSize: Platform.OS === "ios" ? 40 : 40, 
-      fontWeight: 'bold', 
-      alignSelf: 'center', 
-      lineHeight: Platform.OS === "ios" ? 58 : 40
-    }
+      fontSize: Platform.OS === 'ios' ? 40 : 40,
+      fontWeight: 'bold',
+      alignSelf: 'center',
+      lineHeight: Platform.OS === 'ios' ? 58 : 40,
+    },
   };
-
-  export default function (props) {
-      const navigation =useNavigation();
-      return <Camera {...props} navigation = {navigation}/>
-  }
