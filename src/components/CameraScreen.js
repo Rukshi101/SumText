@@ -35,27 +35,18 @@ import HomeScreen from '../components/HomeScreen';
 import Helper from '../lib/helper';
 import PreviewScreen from '../components/PreviewScreen';
 
-const openCamera = (props) => {
-  return (
-    <View>
-      <Text>Camera Goes here</Text>
-    </View>
-  );
-};
 class CameraScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mainText: 'FIRST',
       showCamera: false,
-      showWordList: false,
       recognizedText: null,
     };
   }
   // Must make a dedicated function because when doing setState we must be within the class!
 
   onOCRCapture(recognizedText) {
-    console.log('onCapture', recognizedText);
+    console.log('onCapture - Final Text captured: ', recognizedText);
     this.setState({
       showCamera: false,
       showWordList: Helper.isNotNullAndUndefined(recognizedText),
@@ -87,6 +78,9 @@ class CameraScreen extends React.Component {
         <TouchableOpacity onPress={this.onCameraStart} title="Start Camera">
           <Text>Open Camera</Text>
         </TouchableOpacity>
+        <View style={{marginTop: 20}}>
+          <Text>If no text is found you will return to this page!</Text>
+        </View>
         {this.state.showCamera && (
           <Camera
             cameraType={Constants.Type.front}
@@ -104,13 +98,8 @@ class CameraScreen extends React.Component {
             onClose={(_) => {
               this.setState({showCamera: false});
             }}
+            navigation={this.props.navigation}
           />
-        )}
-        {this.state.showWordList && (
-          <View style={styles.container}>
-            <Button title="RETAKE" onPress={this.retakePicture} />
-            <PreviewScreen wordBlock={this.state.recognizedText} />
-          </View>
         )}
       </View>
     );

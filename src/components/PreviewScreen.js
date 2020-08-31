@@ -28,17 +28,23 @@ class PreviewScreen extends React.Component {
     let wordList = [];
     // Break down all the words detected by the camera
     if (
-      this.props.wordBlock &&
-      this.props.wordBlock.textBlocks &&
-      this.props.wordBlock.textBlocks.length > 0
+      this.props.route.params.wordBlock &&
+      this.props.route.params.wordBlock.textBlocks &&
+      this.props.route.params.wordBlock.textBlocks.length > 0
     ) {
-      for (let idx = 0; idx < this.props.wordBlock.textBlocks.length; idx++) {
-        let text = this.props.wordBlock.textBlocks[idx].value;
+      for (
+        let idx = 0;
+        idx < this.props.route.params.wordBlock.textBlocks.length;
+        idx++
+      ) {
+        let text = this.props.route.params.wordBlock.textBlocks[idx].value;
         if (text && text.trim().length > 0) {
           let words = text.split(/[\s,.?]+/);
           if (words && words.length > 0) {
             for (let idx2 = 0; idx2 < words.length; idx2++) {
-              if (words[idx2].length > 0) wordList.push(words[idx2]);
+              if (words[idx2].length > 0) {
+                wordList.push(words[idx2]);
+              }
             }
           }
         }
@@ -74,6 +80,7 @@ class PreviewScreen extends React.Component {
     await LocalDB.storeObject('modTing', this.state.wordList);
     const getItBack = await LocalDB.getObject('modTing');
     console.log('From local storage: lets GOOOOOO', getItBack);
+    this.props.navigation.navigate('Camera');
   };
 
   render() {
@@ -129,7 +136,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   scrollView: {
-    height: 500,
+    height: 300,
   },
 });
 
