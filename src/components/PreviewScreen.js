@@ -89,6 +89,10 @@ class PreviewScreen extends React.Component {
     });
   };
 
+  onDelete = async () => {
+    this.props.navigation.navigate('Camera');
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -100,7 +104,7 @@ class PreviewScreen extends React.Component {
         </ScrollView>
         <View style={styles.bottomOptions}>
           <Button title="Save" onPress={this.onSave} />
-          <Button title="Delete" />
+          <Button title="Delete" onPress={this.onDelete} />
         </View>
       </View>
     );
