@@ -39,7 +39,7 @@ import CameraScreen from './src/components/CameraScreen';
 import BookmarkScreen from './src/components/BookMarkScreen';
 import UploadScreen from './src/components/UploadScreen';
 import PreviewScreen from './src/components/PreviewScreen';
-import ActualCameraScreen from './src/components/camera/index';
+import SaveScreen from './src/components/SaveScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -67,6 +67,7 @@ function CameraStackScreen() {
     <CameraStack.Navigator>
       <CameraStack.Screen name="Camera" component={CameraScreen} />
       <CameraStack.Screen name="Preview" component={PreviewScreen} />
+      <CameraStack.Screen name="Save" component={SaveScreen} />
     </CameraStack.Navigator>
   );
 }

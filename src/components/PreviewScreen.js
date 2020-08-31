@@ -80,7 +80,13 @@ class PreviewScreen extends React.Component {
     await LocalDB.storeObject('modTing', this.state.wordList);
     const getItBack = await LocalDB.getObject('modTing');
     console.log('From local storage: lets GOOOOOO', getItBack);
-    this.props.navigation.navigate('Camera');
+    let fullWord = '';
+    for (let i = 0; i < this.state.wordList.length; i++) {
+      fullWord = fullWord + ' ' + this.state.wordList[i];
+    }
+    this.props.navigation.navigate('Save', {
+      recognizedWords: fullWord,
+    });
   };
 
   render() {
