@@ -39,6 +39,7 @@ import CameraScreen from './src/components/CameraScreen';
 import BookmarkScreen from './src/components/BookMarkScreen';
 import UploadScreen from './src/components/UploadScreen'
 import PreviewScreen from './src/components/PreviewScreen';
+import ActualCameraScreen from "./src/components/camera/index"
 
 const Tab = createBottomTabNavigator();
 
@@ -61,6 +62,16 @@ function BookMarkStackScreen(){
     </BookMarkStack.Navigator>
   )
 }
+const CameraStack =createStackNavigator();
+function CameraStackScreen(){
+  return(
+    <CameraStack.Navigator>
+      <CameraStack.Screen name = "BeforeCamera" component = {CameraScreen}/>
+      <CameraStack.Screen name = "ActualCamera" component = {ActualCameraScreen}/>
+      <CameraStack.Screen name = "Preview" component = {PreviewScreen}/>
+    </CameraStack.Navigator>
+  )
+}
 
 class App extends React.Component {
   render() {
@@ -68,7 +79,7 @@ class App extends React.Component {
     <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen name = "Home" component = {HomeStackScreen}/>
-        <Tab.Screen name = "Camera" component = {CameraScreen}/>
+        <Tab.Screen name = "Camera" component = {CameraStackScreen}/>
         <Tab.Screen name = "Upload" component = {UploadScreen}/>
         <Tab.Screen name = "Bookmarked" component = {BookMarkStackScreen}/>
         

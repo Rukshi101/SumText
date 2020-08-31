@@ -13,12 +13,13 @@ import {
 import PropTypes from 'prop-types';
 
 import { RNCamera } from 'react-native-camera';
-
+import { useNavigation } from '@react-navigation/native';
 export const Constants = {
     ...RNCamera.Constants,
 };
 
-export default class Camera extends Component {
+class Camera extends Component {
+    
     camera = null;
     state = {
         cameraType: Constants.Type.back,
@@ -26,9 +27,9 @@ export default class Camera extends Component {
         recognizedText: null,
     }
 
+  
 
-
-componentDidMount() {
+componentDidMount () {
     this.setState({
         //If enabledOCR is true, then set camertype to back only
         cameraType: this.props.enabledOCR ? Constants.Type.back : this.props.cameraType,
@@ -50,6 +51,7 @@ takePicture = async () => {
         const data = await this.camera.takePictureAsync(options);
 
         this.props.onCapture && this.props.onCapture(data.base64, this.state.recognizedText);
+       navigation.push('Preview');
     }
 }
 
@@ -63,6 +65,7 @@ onTextRecognized(data) {
 }
 
 render() {
+    const {navigation} = this.props;
     return (
         <View style={[styles.camera.container, this.props.style]}>
              <RNCamera
@@ -122,6 +125,7 @@ render() {
                        }
                        style={{ width: 30, height: 30 }} resizeMode={'contain'} />
                </TouchableOpacity>
+               
                <TouchableOpacity onPress = {this.takePicture.bind(this)} style = {styles.camera.capture}>
                    <Image source = {require('../../../assets/camera/cameraButton.png')} style = {{width:50, height:50}} resizeMode = {'contain'}/>
                </TouchableOpacity>
@@ -242,3 +246,8 @@ const styles = {
       lineHeight: Platform.OS === "ios" ? 58 : 40
     }
   };
+
+  export default function (props) {
+      const navigation =useNavigation();
+      return <Camera {...props} navigation = {navigation}/>
+  }
