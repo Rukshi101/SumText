@@ -39,7 +39,6 @@ class CameraScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mainText: 'FIRST',
       showCamera: false,
       recognizedText: null,
     };
@@ -102,12 +101,6 @@ class CameraScreen extends React.Component {
             navigation={this.props.navigation}
           />
         )}
-        {/* {this.state.showWordList && (
-          <View style={styles.container}>
-            <Button title="RETAKE" onPress={this.retakePicture} />
-            <PreviewScreen wordBlock={this.state.recognizedText} />
-          </View>
-        )} */}
       </View>
     );
   }
