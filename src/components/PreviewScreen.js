@@ -82,7 +82,11 @@ class PreviewScreen extends React.Component {
     console.log('From local storage: lets GOOOOOO', getItBack);
     let fullWord = '';
     for (let i = 0; i < this.state.wordList.length; i++) {
-      fullWord = fullWord + ' ' + this.state.wordList[i];
+      if (i === 0) {
+        fullWord = fullWord + this.state.wordList[i];
+      } else {
+        fullWord = fullWord + ' ' + this.state.wordList[i];
+      }
     }
     this.props.navigation.navigate('Save', {
       recognizedWords: fullWord,
