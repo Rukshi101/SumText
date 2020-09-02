@@ -22,6 +22,31 @@ export default function SaveScreen({route, navigation}) {
     <View style={styles.container}>
       <Text style={styles.title}>{route.params.title}</Text>
       <Text styl={styles.note}>{route.params.note}</Text>
+      <View style={styles.bottomOptions}>
+        <Button
+          title="Edit"
+          onPress={() => {
+            navigation.navigate('Edit', {
+              title: route.params.title,
+              note: route.params.note,
+              indexOfNote: route.params.indexOfNote,
+            });
+          }}
+        />
+        <Button
+          title="Delete"
+          onPress={async () => {
+            const globalStore = await LocalDB.getObject('global');
+            globalStore.splice(route.params.indexOfNote, 1);
+            await LocalDB.storeObject('global', globalStore);
+            console.log(
+              'Succesfully removed a note from the global store, new store: ',
+              globalStore,
+            );
+            navigation.navigate('Home');
+          }}
+        />
+      </View>
     </View>
   );
 }
@@ -42,5 +67,11 @@ const styles = StyleSheet.create({
   note: {
     height: 300,
     fontSize: 16,
+  },
+  bottomOptions: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'flex-end',
   },
 });

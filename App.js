@@ -41,6 +41,7 @@ import UploadScreen from './src/components/UploadScreen';
 import PreviewScreen from './src/components/PreviewScreen';
 import SaveScreen from './src/components/SaveScreen';
 import ViewScreen from './src/components/ViewScreen';
+import EditScreen from './src/components/EditScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -50,6 +51,7 @@ function HomeStackScreen() {
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={HomeScreen} />
       <HomeStack.Screen name="View" component={ViewScreen} />
+      <HomeStack.Screen name="Edit" component={EditScreen} />
     </HomeStack.Navigator>
   );
 }

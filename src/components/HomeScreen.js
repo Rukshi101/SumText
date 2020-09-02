@@ -36,6 +36,9 @@ const HomeScreen = ({navigation}) => {
 
   //Every Time Component is mounted, update the global store
   useEffect(() => {
+    // This mounted variable is to prevent any errors that come with running an asynchronous function inside useEffect
+    let mounted = true;
+
     async function fetchStore() {
       const store = await LocalDB.getObject('global');
       if (store != null) {
@@ -47,7 +50,12 @@ const HomeScreen = ({navigation}) => {
         setGlobalStore([]);
       }
     }
-    fetchStore();
+
+    if (mounted) {
+      fetchStore();
+    }
+
+    return () => (mounted = false);
   });
 
   return (
@@ -61,6 +69,7 @@ const HomeScreen = ({navigation}) => {
               navigation.navigate('View', {
                 title: globalStore[item.key - 1].title,
                 note: globalStore[item.key - 1].note,
+                indexOfNote: item.key - 1,
               });
             }}>
             <Text style={styles.item}>{item.title}</Text>
