@@ -40,6 +40,7 @@ import BookmarkScreen from './src/components/BookMarkScreen';
 import UploadScreen from './src/components/UploadScreen';
 import PreviewScreen from './src/components/PreviewScreen';
 import SaveScreen from './src/components/SaveScreen';
+import ViewScreen from './src/components/ViewScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -48,7 +49,7 @@ function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={HomeScreen} />
-      <HomeStack.Screen name="Bookmarks" component={BookmarkScreen} />
+      <HomeStack.Screen name="View" component={ViewScreen} />
     </HomeStack.Navigator>
   );
 }

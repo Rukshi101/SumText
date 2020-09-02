@@ -7,7 +7,7 @@
  * @flow strict-local
  */
 
-import React, {Component} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 
 import {
   SafeAreaView,
@@ -19,9 +19,11 @@ import {
   Button,
   TouchableOpacity,
   SectionList,
+  FlatList,
 } from 'react-native';
 
 import BookmarkScreen from '../components/BookMarkScreen';
+import LocalDB from '../lib/localDB';
 
 const BioSummaries = [
   {id: 2, title: 'Summary 2000'},
@@ -29,48 +31,54 @@ const BioSummaries = [
   {id: 4, title: 'Summary 4000'},
 ];
 
-const HomeScreen = ({navigation}) => (
-  <View>
-    <Text style={styles.title}>Recent Files</Text>
-    <SectionList
-      sections={[
-        {title: 'Biology', data: BioSummaries},
-        {title: 'Science', data: BioSummaries},
-      ]}
-      renderItem={({item}) => (
-        <View>
-          <Text>{item.title}</Text>
-        </View>
-      )}
-      renderSectionHeader={({section}) => (
-        <View>
-          <Text style={styles.header}>{section.title}</Text>
-        </View>
-      )}
-    />
-    <Button
-      title="Go to New Page"
-      onPress={() => navigation.navigate('Bookmarks')}
-    />
-  </View>
-);
+const HomeScreen = ({navigation}) => {
+  const [globalStore, setGlobalStore] = useState([]);
+
+  //Every Time Component is mounted, update the global store
+  useEffect(() => {
+    async function fetchStore() {
+      const store = await LocalDB.getObject('global');
+      if (store != null) {
+        for (let i = 0; i < store.length; i++) {
+          store[i].key = (i + 1).toString();
+        }
+        setGlobalStore(store);
+      } else {
+        setGlobalStore([]);
+      }
+    }
+    fetchStore();
+  });
+
+  return (
+    <View>
+      <Text>Recent Summaries</Text>
+      <FlatList
+        data={globalStore}
+        renderItem={({item}) => (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('View', {
+                title: globalStore[item.key - 1].title,
+                note: globalStore[item.key - 1].note,
+              });
+            }}>
+            <Text style={styles.item}>{item.title}</Text>
+          </TouchableOpacity>
+        )}
+      />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: 'black',
-    padding: 20,
-    marginVertical: 2,
-  },
-  header: {
-    backgroundColor: 'grey',
-    padding: 19,
-    marginVertical: 2,
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  title: {
-    fontSize: 20,
+    flex: 1,
+    marginHorizontal: 10,
+    marginTop: 24,
+    padding: 30,
+    backgroundColor: 'limegreen',
+    fontSize: 24,
   },
 });
-export default HomeScreen
-
+export default HomeScreen;
