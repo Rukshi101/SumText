@@ -39,7 +39,9 @@ import CameraScreen from './src/components/CameraScreen';
 import BookmarkScreen from './src/components/BookMarkScreen';
 import UploadScreen from './src/components/UploadScreen';
 import PreviewScreen from './src/components/PreviewScreen';
-import ActualCameraScreen from './src/components/camera/index';
+import SaveScreen from './src/components/SaveScreen';
+import ViewScreen from './src/components/ViewScreen';
+import EditScreen from './src/components/EditScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -48,7 +50,8 @@ function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={HomeScreen} />
-      <HomeStack.Screen name="Bookmarks" component={BookmarkScreen} />
+      <HomeStack.Screen name="View" component={ViewScreen} />
+      <HomeStack.Screen name="Edit" component={EditScreen} />
     </HomeStack.Navigator>
   );
 }
@@ -67,6 +70,7 @@ function CameraStackScreen() {
     <CameraStack.Navigator>
       <CameraStack.Screen name="Camera" component={CameraScreen} />
       <CameraStack.Screen name="Preview" component={PreviewScreen} />
+      <CameraStack.Screen name="Save" component={SaveScreen} />
     </CameraStack.Navigator>
   );
 }

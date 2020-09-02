@@ -18,18 +18,18 @@ import PropTypes from 'prop-types';
 import LocalDB from '../lib/localDB';
 
 export default function SaveScreen({route, navigation}) {
-  const [title, setTitle] = useState('');
-  const [note, setNote] = useState(route.params.recognizedWords);
+  const [title, setTitle] = useState(route.params.title);
+  const [note, setNote] = useState(route.params.note);
   return (
     <View style={styles.container}>
       <TextInput
+        defaultValue={route.params.title}
         style={styles.titleInput}
-        placeholder="e.g. My New Note!"
         onChangeText={(text) => setTitle(text)}
       />
       <TextInput
         //onChangeText={setNoteDescription}
-        defaultValue={route.params.recognizedWords}
+        defaultValue={route.params.note}
         mode="flat"
         multiline={true}
         style={styles.noteInput}
@@ -43,31 +43,25 @@ export default function SaveScreen({route, navigation}) {
         onPress={async () => {
           //check if the global store has been made yet
           const globalStore = await LocalDB.getObject('global');
-          console.log('Got the global store: ', globalStore);
-          //If Global store exists, insert new value into global store
+          //If Global store exists, update the value in the global store
           if (globalStore != null) {
             let newNote = {
               title: title,
               note: note,
             };
-            globalStore.push(newNote);
+            globalStore[route.params.indexOfNote] = newNote;
             await LocalDB.storeObject('global', globalStore);
             console.log(
-              'Inserted the new note into the global store, new global store: ',
+              'Updated a note in the global store, new global store: ',
               globalStore,
             );
           } else {
-            //otherwise, make a new global store and store it under the 'global' key
-            let newNote = {
-              title: title,
-              note: note,
-            };
-            let newGlobalStore = [newNote];
-            await LocalDB.storeObject('global', newGlobalStore);
-            console.log('Made new global store: ', newGlobalStore);
+            console.log(
+              'error: Global state is not define whie editing a note',
+            );
           }
 
-          navigation.navigate('Camera');
+          navigation.navigate('Home');
         }}
       />
     </View>

@@ -80,6 +80,20 @@ class PreviewScreen extends React.Component {
     await LocalDB.storeObject('modTing', this.state.wordList);
     const getItBack = await LocalDB.getObject('modTing');
     console.log('From local storage: lets GOOOOOO', getItBack);
+    let fullWord = '';
+    for (let i = 0; i < this.state.wordList.length; i++) {
+      if (i === 0) {
+        fullWord = fullWord + this.state.wordList[i];
+      } else {
+        fullWord = fullWord + ' ' + this.state.wordList[i];
+      }
+    }
+    this.props.navigation.navigate('Save', {
+      recognizedWords: fullWord,
+    });
+  };
+
+  onDelete = async () => {
     this.props.navigation.navigate('Camera');
   };
 
@@ -94,7 +108,7 @@ class PreviewScreen extends React.Component {
         </ScrollView>
         <View style={styles.bottomOptions}>
           <Button title="Save" onPress={this.onSave} />
-          <Button title="Delete" />
+          <Button title="Delete" onPress={this.onDelete} />
         </View>
       </View>
     );
